@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Swift Trials," />
 
 
 
@@ -77,13 +77,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="LU&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Searching for  Swift applications on the Internet, you may find building a weather forecast application a traditional project. It involves requiring JSON data from the Internet, and more importantly a">
+<meta name="keywords" content="Swift Trials">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SimpleWeather">
+<meta property="og:url" content="http://yoursite.com/2018/09/17/SimpleWeather/index.html">
 <meta property="og:site_name" content="LU&#39;s Blog">
+<meta property="og:description" content="Searching for  Swift applications on the Internet, you may find building a weather forecast application a traditional project. It involves requiring JSON data from the Internet, and more importantly a">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/LuYunChi/SimpleWeather/blob/master/SW.gif?raw=true">
+<meta property="og:updated_time" content="2018-09-18T13:57:07.554Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LU&#39;s Blog">
+<meta name="twitter:title" content="SimpleWeather">
+<meta name="twitter:description" content="Searching for  Swift applications on the Internet, you may find building a weather forecast application a traditional project. It involves requiring JSON data from the Internet, and more importantly a">
+<meta name="twitter:image" content="https://github.com/LuYunChi/SimpleWeather/blob/master/SW.gif?raw=true">
 
 
 
@@ -113,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/17/SimpleWeather/"/>
 
 
 
 
 
-  <title>LU's Blog</title>
+  <title>SimpleWeather | LU's Blog</title>
   
 
 
@@ -138,8 +145,7 @@
     
   
 
-  <div class="container sidebar-position-right 
-  page-home">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -222,9 +228,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -254,9 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/17/SimpleWeather/" itemprop="url">SimpleWeather</a></h1>
+          <h1 class="post-title" itemprop="name headline">SimpleWeather</h1>
         
 
         <div class="post-meta">
@@ -306,9 +310,7 @@
       
 
       
-        
-          
-            <p>Searching for  Swift applications on the Internet, you may find building a weather forecast application a traditional project. It involves requiring JSON data from the Internet, and more importantly analyzing data, in other words, match the JSON data with our customed structures. Within this project, I also applied simple animation and row-action of UITableView, as well as UIAlertController. Devoid of professional weather data api (since those are not available for free), the app is just a demo; but techniques are the same.</p>
+        <p>Searching for  Swift applications on the Internet, you may find building a weather forecast application a traditional project. It involves requiring JSON data from the Internet, and more importantly analyzing data, in other words, match the JSON data with our customed structures. Within this project, I also applied simple animation and row-action of UITableView, as well as UIAlertController. Devoid of professional weather data api (since those are not available for free), the app is just a demo; but techniques are the same.</p>
 <h1 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h1><div align="center"><img width="315" height="560" src="https://github.com/LuYunChi/SimpleWeather/blob/master/SW.gif?raw=true"></div>
 
 <h1 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h1><p>The project is now available on my <a href="https://github.com/LuYunChi/SimpleWeather" target="_blank" rel="noopener">Github</a>.</p>
@@ -321,8 +323,6 @@
 <h2 id="About-AlertController-amp-RunLoop"><a href="#About-AlertController-amp-RunLoop" class="headerlink" title="About AlertController &amp; RunLoop"></a>About AlertController &amp; RunLoop</h2><p>If we are to present an alert window and want it to disappear automatically after a time interval, NSTimer is required. But we demand the thread of the timer does not conflict with and suspended by other threads. Apart from the method of using GCD Timer,which has been introduced in UltraTimer, setting RunLoop also reaches the same effect, in a more precise manner.<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> disstime=<span class="type">Timer</span>.scheduledTimer(withTimeInterval: <span class="number">3</span>, repeats: <span class="literal">false</span>)&#123;(<span class="type">Timer</span>) <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">self</span>.dismiss(animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">RunLoop</span>.main.add(disstime, forMode: .commonModes)<span class="comment">//only one sentence is necessary</span></span><br></pre></td></tr></table></figure></p>
 <h1 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h1><p>This demo app is not delicate enough, and can be improved in following derections later on:<br>-More professional api, with more complicated view arrangements can be applied.<br>-Current weather icon set does not cover all weather conditions, and should be modified to cater to unusual weather conditions.<br>-We now ask the user to input a city or region, which results in much uncertainty. So another UIView to present city options where users can search and select their location will be helpful.<br>-Actually the source code is written in a messy manner: non-systematic nomenclature of variables, repeated assignment operation that can be done by loop, etc. It “could”😂 be written more tidy.</p>
 
-          
-        
       
     </div>
     
@@ -337,145 +337,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/31/Timer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yunchi Lu">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LU's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/31/Timer/" itemprop="url">UltraTimer</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-31T13:51:47+08:00">
-                2018-08-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/Swift-Trials/" rel="tag"># Swift Trials</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>As a new comer in swift coding, I started to build a timer app that can achieve basic functions of recording and displaying the time after a week’s learning. There are some existing relevant examples in github, but I couldn’t find one that can display multiple recorded time or use a table view to display unlimited time data. My timer, which I presumingly call it “UltraTimer”🤔, reproduces the same function as the pre-installed timer in ios system. The realization of UltraTimer involves basic layout of UI components, application of UITableView, GCD Timer, and, most importantly, patience for debugging mysterious errors.</p>
-<h1 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h1><div align="center"><img width="320" height="480" src="https://github.com/LuYunChi/Timer/blob/master/demons.gif?raw=true"></div>
-
-<h1 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h1><p>The project is now available on my <a href="https://github.com/LuYunChi/Timer" target="_blank" rel="noopener">Github</a>.</p>
-<h1 id="Remarks"><a href="#Remarks" class="headerlink" title="Remarks"></a>Remarks</h1><p>The following parts may include some segments of the source code. If you fail to understand the separated statement, you can refer to the source code in my Github.</p>
-<h2 id="About-Layouts"><a href="#About-Layouts" class="headerlink" title="About Layouts"></a>About Layouts</h2><p>I used to arrange components by absolute values, but it may cause chaos when the app is running on devices of different sizes of screens. So, it’s more advisable to set the position through relative values. For example, when generating the left button, we can code as follows:<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">but1.frame=<span class="type">CGRect</span>(x: <span class="number">1</span>/<span class="number">8</span>*<span class="keyword">self</span>.view.frame.width, y: <span class="number">1</span>/<span class="number">3</span>*<span class="keyword">self</span>.view.frame.height, width: <span class="number">1</span>/<span class="number">4</span>*<span class="keyword">self</span>.view.frame.width, height:<span class="number">1</span>/<span class="number">4</span>*<span class="keyword">self</span>.view.frame.width)</span><br></pre></td></tr></table></figure></p>
-<h2 id="About-Button-Actions"><a href="#About-Button-Actions" class="headerlink" title="About Button Actions"></a>About Button Actions</h2><p>The title text of the two buttons in this app varies with whether UltraTimer is keeping the time. I used the text “Start”, “Record”, “Continue”, “Stop”, “Reset” to identify the status of the timer. In this case, statements of the following are extremely important to avoid the regeneration of timer. Without the guard statements, if you press “Start” or “Continue” button very fast, you may find the UltraTimer does not stop when you click “Stop” button.<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">guard</span> isrunning==<span class="literal">false</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line"><span class="keyword">guard</span> isrunning==<span class="literal">true</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="About-NSTimer-amp-GCD-Timer"><a href="#About-NSTimer-amp-GCD-Timer" class="headerlink" title="About NSTimer &amp; GCD Timer"></a>About NSTimer &amp; GCD Timer</h2><p>In most Github examples, NSTimer is used to keep the time; however, you may find the app stops keeping the time when you scroll the table. This is because the thread of UI controller conflicts with the thread where NSTimer belongs to. We can solve the problem by setting RunLoop of NSTimer, or, as what I did, use the GCD Timer, which functions in the main thread.<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timer=<span class="type">DispatchSource</span>.makeTimerSource(queue: <span class="type">DispatchQueue</span>.global())</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">settimer</span><span class="params">()</span></span>&#123;</span><br><span class="line">timer.schedule(deadline: .now(), repeating: <span class="number">0.01</span>)</span><br><span class="line">timer.setEventHandler(handler: &#123;<span class="type">DispatchQueue</span>.main.async &#123;<span class="keyword">self</span>.timing()&#125;&#125;)</span><br><span class="line"><span class="keyword">if</span> timer.isCancelled &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line">timer.resume()</span><br><span class="line">timer.suspend()</span><br></pre></td></tr></table></figure></p>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
-<li><a href="https://www.jianshu.com/p/8ed635387cdf" target="_blank" rel="noopener">Realization of GCD Timer</a></li>
-<li><a href="https://www.jianshu.com/p/52032bc4cbe4" target="_blank" rel="noopener">30-swift-project-in-30-days</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/31/Timer/" rel="next" title="UltraTimer">
+                <i class="fa fa-chevron-left"></i> UltraTimer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -485,10 +376,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -496,6 +388,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -516,8 +412,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,6 +493,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preview"><span class="nav-number">1.</span> <span class="nav-text">Preview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Source-Code"><span class="nav-number">2.</span> <span class="nav-text">Source Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Remarks"><span class="nav-number">3.</span> <span class="nav-text">Remarks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#About-Acquiring-amp-Analyzing-JSON-Data"><span class="nav-number">3.1.</span> <span class="nav-text">About Acquiring &amp; Analyzing JSON Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#About-AlertController-amp-RunLoop"><span class="nav-number">3.2.</span> <span class="nav-text">About AlertController &amp; RunLoop</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reflection"><span class="nav-number">4.</span> <span class="nav-text">Reflection</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -722,6 +643,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
