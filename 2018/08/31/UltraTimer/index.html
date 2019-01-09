@@ -3,7 +3,7 @@
 
 
 
-<html class="theme-next muse" lang="">
+<html class="theme-next gemini" lang="">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -81,16 +81,16 @@
 <meta name="keywords" content="Swift Trials">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UltraTimer">
-<meta property="og:url" content="http://yoursite.com/2018/08/31/Timer/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/08/31/UltraTimer/index.html">
 <meta property="og:site_name" content="LU&#39;s Blog">
 <meta property="og:description" content="As a new comer in swift coding, I started to build a timer app that can achieve basic functions of recording and displaying the time after a week’s learning. There are some existing relevant examples">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://github.com/LuYunChi/Timer/blob/master/demons.gif?raw=true">
-<meta property="og:updated_time" content="2019-01-09T08:34:23.515Z">
+<meta property="og:image" content="http://yoursite.com/2018/08/31/UltraTimer/demo.png">
+<meta property="og:updated_time" content="2019-01-09T13:36:43.415Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UltraTimer">
 <meta name="twitter:description" content="As a new comer in swift coding, I started to build a timer app that can achieve basic functions of recording and displaying the time after a week’s learning. There are some existing relevant examples">
-<meta name="twitter:image" content="https://github.com/LuYunChi/Timer/blob/master/demons.gif?raw=true">
+<meta name="twitter:image" content="http://yoursite.com/2018/08/31/UltraTimer/demo.png">
 
 
 
@@ -98,7 +98,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Gemini',
     version: '5.1.4',
     sidebar: {"position":"right","display":"post","offset":6,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
@@ -120,7 +120,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/08/31/Timer/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/31/UltraTimer/"/>
 
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/31/Timer/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/31/UltraTimer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yunchi Lu">
@@ -311,13 +311,12 @@
 
       
         <p>As a new comer in swift coding, I started to build a timer app that can achieve basic functions of recording and displaying the time after a week’s learning. There are some existing relevant examples in github, but I couldn’t find one that can display multiple recorded time or use a table view to display unlimited time data. My timer, which I presumingly call it “UltraTimer”🤔, reproduces the same function as the pre-installed timer in ios system. The realization of UltraTimer involves basic layout of UI components, application of UITableView and GCD Timer.</p>
-<h1 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h1><div align="center"><img width="320" height="480" src="https://github.com/LuYunChi/Timer/blob/master/demons.gif?raw=true"></div>
-
+<h1 id="Preview"><a href="#Preview" class="headerlink" title="Preview"></a>Preview</h1><p><img src="/2018/08/31/UltraTimer/demo.png" alt="demo"></p>
 <h1 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h1><p>The project is now available on my <a href="https://github.com/LuYunChi/Timer" target="_blank" rel="noopener">Github</a>.</p>
 <h1 id="Remarks"><a href="#Remarks" class="headerlink" title="Remarks"></a>Remarks</h1><p>The following parts may include some segments of the source code. If you fail to understand the separated statement, you can refer to the source code in my Github.</p>
 <h2 id="About-Layouts"><a href="#About-Layouts" class="headerlink" title="About Layouts"></a>About Layouts</h2><p>I used to arrange components by absolute values, but it may cause chaos when the app is running on devices of different sizes of screens. So, it’s more advisable to set the position through relative values. For example, when generating the left button, we can code as follows:<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">but1.frame=<span class="type">CGRect</span>(x: <span class="number">1</span>/<span class="number">8</span>*<span class="keyword">self</span>.view.frame.width, y: <span class="number">1</span>/<span class="number">3</span>*<span class="keyword">self</span>.view.frame.height, width: <span class="number">1</span>/<span class="number">4</span>*<span class="keyword">self</span>.view.frame.width, height:<span class="number">1</span>/<span class="number">4</span>*<span class="keyword">self</span>.view.frame.width)</span><br></pre></td></tr></table></figure></p>
 <h2 id="About-Button-Actions"><a href="#About-Button-Actions" class="headerlink" title="About Button Actions"></a>About Button Actions</h2><p>The title text of the two buttons in this app varies with whether UltraTimer is keeping the time. I used the text “Start”, “Record”, “Continue”, “Stop”, “Reset” to identify the status of the timer. In this case, statements of the following are extremely important to avoid the regeneration of timer. Without the guard statements, if you press “Start” or “Continue” button very fast, you may find the UltraTimer does not stop when you click “Stop” button.<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">guard</span> isrunning==<span class="literal">false</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br><span class="line"><span class="keyword">guard</span> isrunning==<span class="literal">true</span> <span class="keyword">else</span> &#123;<span class="keyword">return</span>&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="About-NSTimer-amp-GCD-Timer"><a href="#About-NSTimer-amp-GCD-Timer" class="headerlink" title="About NSTimer &amp; GCD Timer"></a>About NSTimer &amp; GCD Timer</h2><p>In most Github examples, NSTimer is used to keep the time; however, you may find the app stops keeping the time when you scroll the table. This is because the thread of UI controller conflicts with the thread where NSTimer belongs to. We can solve the problem by setting RunLoop of NSTimer, or, as what I did, use the GCD Timer, which functions in the main thread.<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timer=<span class="type">DispatchSource</span>.makeTimerSource(queue: <span class="type">DispatchQueue</span>.global())</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">settimer</span><span class="params">()</span></span>&#123;</span><br><span class="line">timer.schedule(deadline: .now(), repeating: <span class="number">0.01</span>)</span><br><span class="line">timer.setEventHandler(handler: &#123;<span class="type">DispatchQueue</span>.main.async &#123;<span class="keyword">self</span>.timing()&#125;&#125;)</span><br><span class="line"><span class="keyword">if</span> timer.isCancelled &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line">timer.resume()</span><br><span class="line">timer.suspend()</span><br></pre></td></tr></table></figure></p>
+<h2 id="About-NSTimer-amp-GCD-Timer⭐️"><a href="#About-NSTimer-amp-GCD-Timer⭐️" class="headerlink" title="About NSTimer &amp; GCD Timer⭐️"></a>About NSTimer &amp; GCD Timer⭐️</h2><p>In most Github examples, NSTimer is used to keep the time; however, you may find the app stops keeping the time when you scroll the table. This is because the thread of UI controller conflicts with the thread where NSTimer belongs to. We can solve the problem by setting RunLoop of NSTimer, or, as what I did, use the GCD Timer, which functions in the main thread.<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> timer=<span class="type">DispatchSource</span>.makeTimerSource(queue: <span class="type">DispatchQueue</span>.global())</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">settimer</span><span class="params">()</span></span>&#123;</span><br><span class="line">timer.schedule(deadline: .now(), repeating: <span class="number">0.01</span>)</span><br><span class="line">timer.setEventHandler(handler: &#123;<span class="type">DispatchQueue</span>.main.async &#123;<span class="keyword">self</span>.timing()&#125;&#125;)</span><br><span class="line"><span class="keyword">if</span> timer.isCancelled &#123;<span class="keyword">return</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line">timer.resume()</span><br><span class="line">timer.suspend()</span><br></pre></td></tr></table></figure></p>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
 <li><a href="https://www.jianshu.com/p/8ed635387cdf" target="_blank" rel="noopener">Realization of GCD Timer</a></li>
 <li><a href="https://www.jianshu.com/p/52032bc4cbe4" target="_blank" rel="noopener">30-swift-project-in-30-days</a></li>
@@ -503,7 +502,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preview"><span class="nav-number">1.</span> <span class="nav-text">Preview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Source-Code"><span class="nav-number">2.</span> <span class="nav-text">Source Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Remarks"><span class="nav-number">3.</span> <span class="nav-text">Remarks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#About-Layouts"><span class="nav-number">3.1.</span> <span class="nav-text">About Layouts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#About-Button-Actions"><span class="nav-number">3.2.</span> <span class="nav-text">About Button Actions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#About-NSTimer-amp-GCD-Timer"><span class="nav-number">3.3.</span> <span class="nav-text">About NSTimer &amp; GCD Timer</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Preview"><span class="nav-number">1.</span> <span class="nav-text">Preview</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Source-Code"><span class="nav-number">2.</span> <span class="nav-text">Source Code</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Remarks"><span class="nav-number">3.</span> <span class="nav-text">Remarks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#About-Layouts"><span class="nav-number">3.1.</span> <span class="nav-text">About Layouts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#About-Button-Actions"><span class="nav-number">3.2.</span> <span class="nav-text">About Button Actions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#About-NSTimer-amp-GCD-Timer⭐️"><span class="nav-number">3.3.</span> <span class="nav-text">About NSTimer &amp; GCD Timer⭐️</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>
@@ -634,6 +633,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
